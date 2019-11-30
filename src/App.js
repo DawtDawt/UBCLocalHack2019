@@ -4,6 +4,7 @@ import {Route, Switch} from 'react-router-dom'
 import Homepage from "./components/Homepage";
 import Signup from "./components/Signup";
 import Login from "./components/Login";
+import Maps from "./components/maps";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
           <Route exact path={"/"} component={Homepage}/>
           <Route exact path={"/Signup"} component={Signup}/>
           <Route exact path={"/login"} component={Login}/>
+          <Route exact path={"/maps"} component={Maps}/>
         </Switch>
       </React.Fragment>
   );
