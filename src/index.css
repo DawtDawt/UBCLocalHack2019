@@ -61,3 +61,18 @@ code {
   text-align: center;
   color: #007bff;
 }
+div {
+  width: 300px;
+  border: 15px solid orangered;
+  padding: 50px;
+  margin: 20px;
+}
+
+h3 {
+  text-decoration: underline;
+}
+
+body {
+  color: blue;
+  font-family: "Comic Sans", sans-serif;
+}
