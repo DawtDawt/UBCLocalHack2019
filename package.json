@@ -4,9 +4,11 @@
   "private": true,
   "dependencies": {
     "bootstrap": "^4.4.1",
+    "concurrently": "^5.0.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "google-maps-react": "^2.0.2",
+    "node-fetch": "^2.6.0",
     "nodemon": "^2.0.1",
     "pg": "^7.14.0",
     "react": "^16.12.0",
@@ -17,10 +19,11 @@
     "react-scripts": "3.2.0"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "concurrently \"npm run server\" \"react-scripts start\" ",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "server": "cd src && cd backend && nodemon index.js"
   },
   "eslintConfig": {
     "extends": "react-app"
