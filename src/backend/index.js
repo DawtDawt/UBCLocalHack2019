@@ -15,6 +15,7 @@ const allowCrossDomain = function(req, res, next) {
     next();
 };
 
+// TODO
 try {
     const started = start.init();
 } catch (error) {

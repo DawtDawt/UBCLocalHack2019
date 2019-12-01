@@ -4,7 +4,59 @@
 // example sections array: [{term: "2019W", dept: "CPSC", id: "310", section: "101"}]
 // returns username if successful
 async function createUser(username, password, address, sections, driver, seats) {
-    // TODO
+    try {
+        if (typeof username !== "string" && username.length === 0) {
+            throw Error("username is invalid.");
+        }
+        if (typeof password !== "string" && password.length === 0) {
+            throw Error("password is invalid");
+        }
+        if (typeof address !== "string" && address.length === 0) {
+            throw Error("address is invalid");
+        }
+        if (typeof sections !== "array" && sections.length === 0) {
+            throw Error("no valid sections were inputted");
+        }
+        if (typeof driver !== "boolean") {
+            throw Error("driver is invalid");
+        }
+        if (typeof seats !== "number") {
+            throw Error("seats is invalid");
+        }
+
+        const response = await fetch("http://localhost:8080/user", {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                username,
+                password,
+                address,
+                sections,
+                driver,
+                seats
+            })
+        });
+
+        const content = await response.json();
+        if (content.error) {
+            if (content.error.hasOwnProperty("message")) {
+                alert(content.error.message);
+                console.log(content.error);
+                throw Error(content.error);
+            } else {
+                console.log(content.error);
+                alert("New Untracked Error In createUser: " + content.error.detail);
+                throw Error(content.error);
+            }
+        } else {
+            return (content.data);
+        }
+    } catch (error) {
+        console.log(error);
+    }
 }
 
 // login function for users

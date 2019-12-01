@@ -11,6 +11,7 @@ const pool = new Pool({
 });
 
 const test = async() => {
+
 };
 
 test();
@@ -34,11 +35,44 @@ async function createUser (request, response) {
     const username = request.body.username;
     const password = request.body.password;
     const address = request.body.address;
-    const sections = request.body.sections;
-    const driver = request.body.driver;
-    const seats = request.body.seats;
-
-};
+    const s = request.body.sections;
+    console.log(s);
+    const sections = JSON.parse(request.body.sections);
+    const driver = Boolean(request.body.driver);
+    let driverID = null;
+    if (driver) {
+        driverID = username;
+    }
+    const seats = JSON.parse(request.body.seats);
+    console.log(username, password, address, sections, driver, seats);
+    try {
+        const addUser = await pool.query(`INSERT INTO users VALUES
+        ($1, $2, $3, $4, $5)`, [username, password, address, driverID, seats]);
+        for (const section of sections) {
+            console.log(section);
+            const res = await fetch("https://ubc-courses-api.herokuapp.com/" + section.term + "/" +
+                section.dept + "/" + section.id + "/" + section.number);
+            console.log(res);
+            const data = await res.json();
+            const sectionExists = await pool.query(`SELECT * FROM sections WHERE sid = $1`, [data._id]);
+            if (sectionExists.rows.length === 0) {
+                const fromtime = data.start + ":00";
+                const totime = data.end + ":00";
+                const addSection = await pool.query(`INSERT INTO sections VALUES
+                ($1, $2, $3, $4)`, [data._id, data.days, fromtime, totime]);
+                console.log("added new section");
+            }
+            const addAttend = await pool.query(`INSERT INTO attend VALUES
+            ($1, $2)`, [username, data._id]);
+            console.log("added new attend");
+        }
+        return response.json({
+            data: username
+        })
+    } catch (error) {
+        console.log(error);
+    }
+}
 
 function confirmUser (request, response) {
 
