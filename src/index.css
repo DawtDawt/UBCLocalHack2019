@@ -62,10 +62,8 @@ code {
   color: #007bff;
 }
 div {
-  width: 300px;
-  border: 15px solid orangered;
-  padding: 50px;
-  margin: 20px;
+  height: 100%;
+  width: 100%;
 }
 
 h3 {
