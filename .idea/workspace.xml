@@ -2,12 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="511a4e1f-0a1a-482e-8723-b1f612a33a69" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/backend/.env" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/backend/init.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Fetch.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/backend/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/backend/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/backend/query.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/backend/query.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -103,7 +97,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/backend/query.js</url>
-          <line>16</line>
+          <line>15</line>
           <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="1" />
         </line-breakpoint>

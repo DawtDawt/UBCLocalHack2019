@@ -1,6 +1,5 @@
 const {Pool} = require('pg');
 require('dotenv').config();
-const canvasAPI = require('node-canvas-api');
 const fetch = require('node-fetch');
 
 const pool = new Pool({
@@ -12,17 +11,6 @@ const pool = new Pool({
 });
 
 const test = async() => {
-    let sections = [];
-    const studentResponse = await canvasAPI.getSelf();
-    const studentID = studentResponse.id;
-    const sectionsResponse = await canvasAPI.getCoursesByUser(studentID);
-    for (const section of sectionsResponse) {
-        if ("access_restricted_by_date" in section) {
-            continue;
-        }
-        sections.push(section);
-    }
-    console.log(sections);
 };
 
 test();
