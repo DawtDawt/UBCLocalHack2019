@@ -26,6 +26,9 @@ class Homepage extends React.Component {
                     <Link to="/signup">
                         <Button variant={"primary"} size={"lg"} style={btnStyle}>Sign Up</Button>
                     </Link>
+                    <Link to="/maps">
+                        <Button variant={"primary"} size={"lg"} style={btnStyle}>MAPS</Button>
+                    </Link>
                 </div>
             </div>
         )
